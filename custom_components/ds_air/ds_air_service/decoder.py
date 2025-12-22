@@ -929,6 +929,8 @@ class VentilationCapabilityQueryResult(BaseResult):
                     if flag & EnumControl.Type.SWITCH:
                         vent.switch = EnumControl.Switch(d.read1())
                 self._vents.append(vent)
+            # 不清楚这个字节是干什么的，但room之间有一个字节
+            dummy = d.read1()
 
     def do(self):
         from .service import Service
